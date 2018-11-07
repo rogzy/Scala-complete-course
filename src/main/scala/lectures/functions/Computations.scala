@@ -13,7 +13,7 @@ trait Data {
   val dataArray = "Клара Цеткин обожала Карла Маркса".split(" ")
 }
 
-object Computation extends Data {
+object Computation extends App with Data {
 
   def computation(filterData: String, dataProducer: Array[String]): Array[String] = {
     //EMULATE HEAVY LOAD
@@ -39,7 +39,7 @@ object Computation extends Data {
   *
   * Какой тип имеет partiallyAppliedCurriedFunction - ?
   */
-object CurriedComputation extends Data {
+object CurriedComputation extends App with Data {
 
   def curriedComputation(filterData: String)(dataProducer: Array[String]): Array[String] =
     filterData.split(" ").filter(dataItem => dataProducer.contains(dataItem))
@@ -55,7 +55,7 @@ object CurriedComputation extends Data {
   *
   * При этом постарайтесь минимизировать количество разбиений строки filterData на отдельные слова.
   */
-object FunctionalComputation extends Data {
+object FunctionalComputation extends App with Data {
 
   def functionalComputation(filterData: String): (Array[String]) => Array[String] =
     _.map( item => if (filterData.contains(item)) item else "").filterNot(_.isEmpty)
